@@ -293,6 +293,8 @@
     </style>
 </head>
 <body>
+      <audio id="bgAudio" src="GoldenBrown.mp4" autoplay loop></audio>
+    </div>
     <!-- Floating particles -->
     <div class="particles" id="particles"></div>
     
@@ -337,6 +339,19 @@
     </div>
 
     <script>
+         const audio = document.getElementById("bgAudio");
+      audio.volume = 0.6;
+
+      // Try to play automatically, retry if blocked
+      window.addEventListener("load", () => {
+        const play = audio.play();
+        if (play !== undefined) {
+          play.catch(() => {
+            // Retry after small delay in case browser blocks autoplay
+            setTimeout(() => audio.play(), 2000);
+          });
+        }
+      });
         // Create floating particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
