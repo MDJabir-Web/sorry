@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Really Sorry 💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0A2647 0%, #1E90FF 50%, #89CFF0 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(162, 210, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: rgba(137, 207, 240, 0.4);
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: rgba(30, 144, 255, 0.3);
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Glassmorphism card */
+        .apology-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: cardFadeIn 1.5s ease-out;
+        }
+
+        .apology-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(162, 210, 255, 0.1), rgba(137, 207, 240, 0.1));
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        .title {
+            font-size: 3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(162, 210, 255, 0.5);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 20px rgba(162, 210, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(162, 210, 255, 0.8), 0 0 40px rgba(137, 207, 240, 0.3); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            text-align: left;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+
+        .quotes-section {
+            margin: 30px 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.2s forwards;
+        }
+
+        .quote {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin: 15px 0;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid rgba(162, 210, 255, 0.6);
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .quote:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: rgba(162, 210, 255, 0.9);
+            transform: translateX(5px);
+        }
+
+        .signature {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Forgive button */
+        .forgive-btn {
+            background: linear-gradient(45deg, #1E90FF, #89CFF0);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(30, 144, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 3.2s forwards;
+        }
+
+        .forgive-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .forgive-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(30, 144, 255, 0.4);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .forgive-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: heartFloat 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .heart:nth-child(2) { left: 10%; animation-delay: -2s; }
+        .heart:nth-child(3) { left: 20%; animation-delay: -4s; font-size: 16px; }
+        .heart:nth-child(4) { left: 80%; animation-delay: -1s; }
+        .heart:nth-child(5) { left: 90%; animation-delay: -3s; font-size: 24px; }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .apology-card {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .apology-card {
+                padding: 30px 20px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            color: #0A2647;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Floating hearts -->
+    <div class="heart">💙</div>
+    <div class="heart">💙</div>
+    <div class="heart">💙</div>
+    <div class="heart">💙</div>
+    <div class="heart">💙</div>
+
+    <!-- Main container -->
+    <div class="container">
+        <div class="apology-card">
+            <h1 class="title">My Deepest Apology 💙</h1>
+            <p class="subtitle">A Knight's Plea for Forgiveness</p>
+            
+            <div class="message">
+                <p>My dearest, I come before you not as a proud knight, but as a humble soul who has failed you. I'm sorry for everything for making you get caught, for all the trouble and yelling you had to face because of me. You didn't deserve that burden, and it tears at my heart knowing I caused you such pain.</p>
+                
+                <p>I kneel before you now, asking not just for forgiveness, but for the chance to love you properly again. My heart aches with the weight of my mistakes, and I would give anything to undo the hurt I've caused. You are my light, my reason for being, and I cannot bear the thought of losing you because of my failures.</p>
+                
+                <p>Please, allow me to prove that my love is true and my commitment unwavering. I want to love you the way you deserve with honor, respect, and devotion that knows no bounds. Give me the chance to be the knight you believed in, the one who protects your heart instead of breaking it. 💔</p>
+            </div>
+            
+            <div class="quotes-section">
+                <p class="quote">"True love is not about perfection, it's about forgiveness and growing together." 💫</p>
+                <p class="quote">"A knight's greatest victory is winning back the heart he once broke." ⚔</p>
+                <p class="quote">"In your eyes, I found my home. In your forgiveness, I find my redemption." 🌟</p>
+                <p class="quote">"Love is not about never falling, but about getting up and trying again." 💙</p>
+            </div>
+            
+            <p class="signature">— Your Devoted Knight, Forever and Always 🛡️💙</p>
+            
+            <button class="forgive-btn" onclick="showForgiveness()">Forgive Me</button>
+        </div>
+    </div>
+
+    <!-- Success message -->
+    <div class="success-message" id="successMessage">
+        <div>Thank you for your forgiveness 💙</div>
+        <div style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">Your kindness means everything to me</div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Show forgiveness message
+        function showForgiveness() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Create extra particles on click
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.position = 'fixed';
+                    particle.style.left = '50%';
+                    particle.style.top = '50%';
+                    particle.style.width = '6px';
+                    particle.style.height = '6px';
+                    particle.style.background = 'rgba(162, 210, 255, 0.8)';
+                    particle.style.borderRadius = '50%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '999';
+                    
+                    const angle = (i / 10) * Math.PI * 2;
+                    const distance = 100;
+                    const endX = Math.cos(angle) * distance;
+                    const endY = Math.sin(angle) * distance;
+                    
+                    particle.style.animation = `explode 1s ease-out forwards`;
+                    particle.style.setProperty('--endX', endX + 'px');
+                    particle.style.setProperty('--endY', endY + 'px');
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 1000);
+                }, i * 50);
+            }
+            
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        // Add explosion animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes explode {
+                0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                100% { transform: translate(calc(-50% + var(--endX)), calc(-50% + var(--endY))) scale(0); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+
+        // Add gentle mouse movement effect
+        document.addEventListener('mousemove', (e) => {
+            const card = document.querySelector('.apology-card');
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const rotateX = (y / rect.height) * 5;
+            const rotateY = (x / rect.width) * -5;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            const card = document.querySelector('.apology-card');
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9896be53044f7e60',t:'MTc1OTYwMjU1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
